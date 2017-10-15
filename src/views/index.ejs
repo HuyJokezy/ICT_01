@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Homepage</title>
+</head>
+<body>
+	<main>
+		<div>
+			<form action="/">
+				<input type="text" name="name" id="searchBar" onkeyup="test()" required="">
+				<input type="submit" value="Search">
+			</form>
+		</div>
+		<div>
+			<% products.forEach((product) => { %>
+				<p><strong><%= product[0] %>: </strong><%= product[1].toLocaleString() %> đ</p>
+			<% })%>
+		</div>
+	</main>
+	<script type="text/javascript">
+		function test () {
+			let value = document.getElementById('searchBar').value
+			console.log(value)
+		}
+	</script>
+</body>
+</html>
