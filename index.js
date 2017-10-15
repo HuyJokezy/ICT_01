@@ -12,8 +12,10 @@ app.set('views', __dirname + '/src/views')
 
 // Route
 let index = require('./src/route/index')
+let api	= require('./src/route/api')
 
 app.use('/', index)
+app.use('/api', api)
 
 app.listen(process.env.PORT || 8000)
 console.log('Website on')

@@ -5,12 +5,17 @@
 </head>
 <body>
 	<main>
+		<a href="/">Homepage</a>
 		<div>
 			<form action="/">
-				<input type="text" name="name" id="searchBar" onkeyup="test()" required="">
+				<input type="text" name="name" id="searchBar" onkeyup="recommend(this.value)">
 				<input type="submit" value="Search">
 			</form>
+			<p id="searchSuggest1"></p>
+			<p id="searchSuggest2"></p>
+			<p id="searchSuggest3"></p>
 		</div>
+		<h3>Products</h3>
 		<div>
 			<% products.forEach((product) => { %>
 				<p><strong><%= product[0] %>: </strong><%= product[1].toLocaleString() %> đ</p>
@@ -18,9 +23,23 @@
 		</div>
 	</main>
 	<script type="text/javascript">
-		function test () {
-			let value = document.getElementById('searchBar').value
-			console.log(value)
+		function recommend(value){
+			document.getElementById(`searchSuggest1`).innerHTML = ''
+			document.getElementById(`searchSuggest2`).innerHTML = ''
+			document.getElementById(`searchSuggest3`).innerHTML = ''
+	    var xmlHttp = new XMLHttpRequest()
+	    xmlHttp.onreadystatechange = function() { 
+	      if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+	      	console.log(xmlHttp.responseText)
+	      	let values = JSON.parse(xmlHttp.responseText)
+	      	for (let i = 0; i < 3; i++) {
+						if (values[i])
+							document.getElementById(`searchSuggest${ i + 1 }`).innerHTML = values[i][0]
+					}
+	      }
+	    }
+	    xmlHttp.open('GET', `./api/products_suggestion?query=${ value }`, true)
+	    xmlHttp.send()
 		}
 	</script>
 </body>
