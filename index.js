@@ -13,9 +13,13 @@ app.set('views', __dirname + '/src/views')
 // Route
 let index = require('./src/route/index')
 let api	= require('./src/route/api')
+let product	= require('./src/route/product')
 
 app.use('/', index)
 app.use('/api', api)
+app.use('/product', product)
 
-app.listen(process.env.PORT || 8000)
-console.log('Website on')
+app.listen(process.env.PORT || 8000, () => {
+	app.emit('Website on', null)
+	console.log('Website on')
+})

@@ -9,7 +9,7 @@ exports.products_suggestion = function (req, res) {
 		response
 		.on('data', (data) => {
 			let query = util.fixVietnamese(req.query.query)
-			let dataText = util.fixVietnamese(data[0])
+			let dataText = util.fixVietnamese(data[1])
 
 			if (dataText.includes(query))
 				products.push(data)
@@ -20,9 +20,27 @@ exports.products_suggestion = function (req, res) {
 	}
 }
 
+exports.product_detail = function (req, res) {
+	let id = req.params.id
+	let response = product.get_all_products()
+	let products = ''
+	response
+	.on('data', (data) => {
+		if (data[0] === id)
+			products = data
+		})
+	.on('end', () => {
+		if (products === '') res.redirect('/')
+		else
+		res.render('product', {
+			products: products
+		})
+	})
+}
+
 exports.products_list = function (req, res) {
-	let query = req.query
-	if (query.name) {
+	if (req.query.name) {
+		let name = util.fixVietnamese(req.query.name)
 		let response = product.get_all_products()
 		let products = []
 		response
@@ -32,7 +50,8 @@ exports.products_list = function (req, res) {
 		.on('end', () => {
 			let searchResult = []
 			products.forEach(function (product) {
-				if (product[0].toLowerCase() === query.name.toLowerCase())
+				let dataText = util.fixVietnamese(product[1])
+				if (dataText.includes(name))
 					searchResult.push(product)
 			})
 			if (searchResult.length === 0) searchResult = products

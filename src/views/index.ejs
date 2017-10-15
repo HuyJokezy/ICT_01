@@ -11,14 +11,16 @@
 				<input type="text" name="name" id="searchBar" onkeyup="recommend(this.value)">
 				<input type="submit" value="Search">
 			</form>
-			<p id="searchSuggest1"></p>
-			<p id="searchSuggest2"></p>
-			<p id="searchSuggest3"></p>
+			<p><a id="searchSuggest1"></a></p>
+			<p><a id="searchSuggest2"></a></p>
+			<p><a id="searchSuggest3"></a></p>
+			<p><a id="searchSuggest4"></a></p>
+			<p><a id="searchSuggest5"></a></p>
 		</div>
 		<h3>Products</h3>
 		<div>
 			<% products.forEach((product) => { %>
-				<p><strong><%= product[0] %>: </strong><%= product[1].toLocaleString() %> đ</p>
+				<p><a href="/product/<%= product[0] %>" style="text-decoration: none !important;"><strong><%= product[1] %>: </strong><%= product[2] %> đ</p></a>
 			<% })%>
 		</div>
 	</main>
@@ -27,14 +29,20 @@
 			document.getElementById(`searchSuggest1`).innerHTML = ''
 			document.getElementById(`searchSuggest2`).innerHTML = ''
 			document.getElementById(`searchSuggest3`).innerHTML = ''
+			document.getElementById(`searchSuggest4`).innerHTML = ''
+			document.getElementById(`searchSuggest5`).innerHTML = ''
 	    var xmlHttp = new XMLHttpRequest()
 	    xmlHttp.onreadystatechange = function() { 
 	      if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
 	      	console.log(xmlHttp.responseText)
 	      	let values = JSON.parse(xmlHttp.responseText)
-	      	for (let i = 0; i < 3; i++) {
-						if (values[i])
-							document.getElementById(`searchSuggest${ i + 1 }`).innerHTML = values[i][0]
+	      	for (let i = 0; i < 5; i++) {
+						if (values[i]) {
+							document.getElementById(`searchSuggest${ i + 1 }`).style = "text-decoration: none !important;"
+							document.getElementById(`searchSuggest${ i + 1 }`).href = `/product/${ values[i][0] }`
+							document.getElementById(`searchSuggest${ i + 1 }`).innerHTML = values[i][1]
+						}
+
 					}
 	      }
 	    }
