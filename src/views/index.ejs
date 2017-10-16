@@ -8,7 +8,9 @@
 		<a href="/">Homepage</a>
 		<div>
 			<form action="/">
-				<input type="text" name="name" id="searchBar" onkeyup="recommend(this.value)">
+				<input type="text" name="name" id="searchBar" onkeyup="recommend(this.value)" pattern="[a-zA-Z\s]+" 
+					title="Only A-Z, a-z, space with maximum of 50 characters" 
+					maxlength="50">
 				<input type="submit" value="Search">
 			</form>
 			<p><a id="searchSuggest1"></a></p>
