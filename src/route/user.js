@@ -24,6 +24,7 @@ router.get('/', (req, res) => userController.userInfo(req, res))
 router.post('/signup', (req, res) => {
   userController.addUser(req, res)
 })
+router.get('/', (req, res) => userController.userInfo(req, res))
 router.post('/login', (req, res) => userController.userLogin(req, res))
 router.post('/edit', (req, res) => {
   // console.log(req.body)
