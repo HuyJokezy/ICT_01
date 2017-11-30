@@ -14,7 +14,7 @@
     <form action="/user/edit" method="POST" id="userform">
       <p>
         <label for="name">Full Name</label>
-        <input minlength="8" maxlength="30" type="text" name="name" value="<%= name %>" required>
+        <input minlength="8" maxlength="30" type="text" name="name" value="<%= name %>" required pattern="[a-zA-Z ]+" placeholder="8-30 characters. Only letters">
       </p>
       <p>
         <label for="phone">Phone</label>

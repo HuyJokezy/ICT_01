@@ -1,5 +1,6 @@
 let router = require('express').Router()
 let userController = require('../controllers/user/userController')
+let util = require('../util/index').ultility;
 
 router.get('/signup', (req, res) => {
   let currentUser

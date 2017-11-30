@@ -12,19 +12,19 @@
     <br>
     <form action="/user/signup" method="POST" id="userform">
       <label for="username">Username</label>
-      <input type="text" name="username" minlength="4" maxlength="15" required="">
+      <input type="text" name="username" minlength="4" maxlength="15" required="" placeholder="4-15 characters. Only letters or digits" pattern="[a-zA-Z0-9]+">
       <br>
       <br>
       <label for="password">Password</label>
-      <input type="password" name="password" minlength="4" maxlength="15" required="">
+      <input type="password" name="password" minlength="4" maxlength="15" required="" placeholder="4-15 characters">
       <br>
       <p>
         <label for="name">Full Name</label>
-        <input minlength="8" maxlength="30" type="text" name="name" value="" required>
+        <input minlength="8" maxlength="30" type="text" name="name" value="" required pattern="[a-zA-Z ]+" placeholder="8-30 characters. Only letters">
       </p>
       <p>
         <label for="phone">Phone</label>
-        <input type="text" name="phone" value="" pattern="[0-9]{9,10}$" title="9-10 digits" required>
+        <input type="text" name="phone" value="" pattern="[0-9]{9,10}$" title="9-10 digits" required placeholder="9-10 digits">
       </p>
       <p>
         <label for="address">Address</label>
