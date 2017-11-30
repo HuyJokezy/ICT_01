@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body style="padding: 2%">
+  <main>
+    <a href="/">Homepage></a>
+    <a onclick="logout()" style="text-decoration: underline;">Log Out</a>
+    <br>
+    <br>
+    <p>Hello, <%= username %></p>
+    <form action="/user/edit" method="POST" id="userform">
+      <p>
+        <label for="name">Full Name</label>
+        <input minlength="8" maxlength="30" type="text" name="name" value="<%= name %>" required>
+      </p>
+      <p>
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" value="<%= phone %>" pattern="[0-9]{9,10}$" title="9-10 digits" required>
+      </p>
+      <p>
+        <label for="address">Address</label>
+        <br>
+        <textarea form="userform" minlength="8" maxlength="100" type="text" name="address" value="" required style="width:400px;height:100px;top:100px"><%= address %></textarea>
+      </p>
+      <p>
+        <input type="submit" name="" value="Save">
+      </p>
+    </form>
+  </main>
+  <script type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script type="text/javascript" src="/api/clientJS/cartHandler"></script>
+  <script type="text/javascript" src="/api/clientJS/checkOut"></script>
+  <script type="text/javascript" src="/api/clientJS/cookieHandler"></script>
+</body>
+</html>

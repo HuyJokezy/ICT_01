@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body style="padding: 2%">
+  <main>
+    <a href="/">Homepage</a>
+    <br>
+    <br>
+    <form action="/user/login" method="POST">
+      <label for="username">Username</label>
+      <input type="text" name="username" minlength="4" maxlength="15" required="">
+      <label for="password">Password</label>
+      <input type="password" name="password" minlength="4" maxlength="15" required="">
+      <input type="submit" name="" value="Login">
+    </form>
+  </main>
+  <script type="text/javascript">
+    let error = <%= error %>
+    if (error) {
+      alert('Wrong username or password')
+    }
+  </script>
+  <script type="text/javascript" src="/api/clientJS/cartHandler"></script>
+  <script type="text/javascript" src="/api/clientJS/checkOut"></script>
+  <script type="text/javascript" src="/api/clientJS/cookieHandler"></script>
+</body>
+</html>

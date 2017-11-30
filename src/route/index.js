@@ -1,6 +1,8 @@
 let router = require('express').Router()
-let product = require('../controllers/product')
+let product = require('../controllers/searchProduct/searchProductController')
 
-router.get('/', (req, res) => product.products_list(req, res))
+router.get('/', (req, res) => {
+  	product.listFeaturedProducts(req, res);
+})
 
 module.exports = router
