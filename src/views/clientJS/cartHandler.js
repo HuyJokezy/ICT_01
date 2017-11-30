@@ -43,6 +43,7 @@ function changeCart(id, value) {
     xmlHttp.onreadystatechange = function() {
       if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
         console.log(xmlHttp.responseText)
+        top.location.href = window.location.href
       }
     }
     xmlHttp.open('POST', `/api/changeCart?username=${currentUser}&productId=${id}&value=${value}`, true)
@@ -62,6 +63,7 @@ function changeCart(id, value) {
     cart.join(',')
     createCookie('cart', cart)
     console.log(read_cookie('cart'))
+    top.location.href = window.location.href
   }
 
 }

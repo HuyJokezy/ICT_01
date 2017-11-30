@@ -75,7 +75,7 @@ exports.editUser = function (req, res) {
 exports.addUser = function (req, res) {
   let callback = function (username) {
     res.cookie('currentUser', username)
-    res.redirect('/user')
+    res.redirect('/')
   }
   let currentUser
   if (req.headers.cookie) {
