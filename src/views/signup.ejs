@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body style="padding: 2%">
+  <main>
+    <a href="/">Homepage</a>
+    <span><a href="/user">Login</a></span>
+    <br>
+    <br>
+    <form action="/user/signup" method="POST" id="userform">
+      <label for="username">Username</label>
+      <input type="text" name="username" minlength="4" maxlength="15" required="">
+      <br>
+      <br>
+      <label for="password">Password</label>
+      <input type="password" name="password" minlength="4" maxlength="15" required="">
+      <br>
+      <p>
+        <label for="name">Full Name</label>
+        <input minlength="8" maxlength="30" type="text" name="name" value="" required>
+      </p>
+      <p>
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" value="" pattern="[0-9]{9,10}$" title="9-10 digits" required>
+      </p>
+      <p>
+        <label for="address">Address</label>
+        <br>
+        <textarea form="userform" minlength="8" maxlength="100" type="text" name="address" value="" required style="width:400px;height:100px;top:100px"></textarea>
+      </p>
+      <p>
+        <input type="submit" name="" value="Sign up">
+      </p>
+    </form>
+  </main>
+  <script type="text/javascript">
+    let error = '<%= error %>'
+    console.log(error)
+    if (error !== 'false') {
+      alert(error)
+    }
+  </script>
+  <script type="text/javascript" src="/api/clientJS/cartHandler"></script>
+  <script type="text/javascript" src="/api/clientJS/checkOut"></script>
+  <script type="text/javascript" src="/api/clientJS/cookieHandler"></script>
+</body>
+</html>

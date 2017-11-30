@@ -71,3 +71,23 @@ exports.editUser = function (req, res) {
     callback()
   }
 }
+
+exports.addUser = function (req, res) {
+  let callback = function (username) {
+    res.cookie('currentUser', username)
+    res.redirect('/user')
+  }
+  let currentUser
+  if (req.headers.cookie) {
+    let cookiesObj = util.parseCookies(req.headers.cookie)
+    currentUser = cookiesObj.currentUser
+    if (currentUser) {
+      callback()
+    } else {
+      userModel.addUser(req.body, callback, res)
+    }
+  }
+  else {
+    userModel.addUser(req.body, callback, res)
+  }
+}

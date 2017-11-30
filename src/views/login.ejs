@@ -7,13 +7,18 @@
 <body style="padding: 2%">
   <main>
     <a href="/">Homepage</a>
+    <span><a href="/user/signup">Sign Up</a></span>
     <br>
     <br>
     <form action="/user/login" method="POST">
       <label for="username">Username</label>
       <input type="text" name="username" minlength="4" maxlength="15" required="">
+      <br>
+      <br>
       <label for="password">Password</label>
       <input type="password" name="password" minlength="4" maxlength="15" required="">
+      <br>
+      <br>
       <input type="submit" name="" value="Login">
     </form>
   </main>

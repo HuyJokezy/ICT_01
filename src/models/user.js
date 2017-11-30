@@ -21,6 +21,38 @@ function verifyUser (username, password, callback) {
   })
 }
 
+function addUser (user, callback, res) {
+  let { username, password, address, phone, name } = user
+  if (username, password, address, phone, name) {
+    let result = [];
+
+    csv.fromPath('./src/static/user.csv')
+    .on('data', (data) => {
+      result.push(data);
+    })
+    .on('end', () => {
+      let index = result.findIndex((acc) => {
+        return acc[0] === username
+      })
+      let isUser = false
+      if (index !== -1) {
+        isUser = true
+      }
+      if(isUser) {
+        res.render('signup', {
+          error: "Username already used"
+        })
+      } else {
+        result.push([username, password, name, phone, address, "empty"])
+        reWrite(result)
+        callback(username)
+      }
+    })
+  } else {
+    callback(username)
+  }
+}
+
 function getByUsername (username, callback) {
   let result = [];
 
@@ -196,5 +228,6 @@ module.exports = {
   getCart,
   clearCart,
   addCart,
-  changeCart
+  changeCart,
+  addUser
 }
