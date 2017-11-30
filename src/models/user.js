@@ -230,5 +230,4 @@ module.exports = {
   addCart,
   changeCart,
   addUser
-  changeCart
 }
