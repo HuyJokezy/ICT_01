@@ -10,6 +10,13 @@ function recommend(value){
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
       console.log(xmlHttp.responseText)
       let values = JSON.parse(xmlHttp.responseText)
+      if (values.length !== 0) {
+        document.getElementById(`searchSuggestDiv`).style.display = ''
+        // document.getElementById(`searchSuggestDiv`).style.display = ''
+      } else {
+        document.getElementById(`searchSuggestDiv`).style.display = 'none'
+        // document.getElementById(`searchSuggestDiv`).style.display = 'none'
+      }
       for (let i = 0; i < 5; i++) {
         if (values[i]) {
           document.getElementById(`searchSuggest${ i + 1 }`).style = "text-decoration: none !important;"
@@ -19,6 +26,6 @@ function recommend(value){
       }
     }
   }
-  xmlHttp.open('GET', `./api/productSuggestion?query=${ value }`, true)
+  xmlHttp.open('GET', `/api/productSuggestion?query=${ value }`, true)
   xmlHttp.send()
 }

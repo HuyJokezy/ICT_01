@@ -12,7 +12,7 @@
     <span>Hello, <a href="/user"><%= currentUser %></a>></span>
     <span><a onclick="logout()" style="text-decoration: underline;">Log Out</a></span>
     <% } else { %>
-    <a href="/user">Login</a>
+    <span><a href="/user">Login</a>></span>
     <span><a href="/user/signup">Sign Up</a></span>
     <% }%>
     <% if (products.length === 0) {%>
