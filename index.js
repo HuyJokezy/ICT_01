@@ -14,12 +14,16 @@ app.set('views', __dirname + '/src/views')
 let index = require('./src/route/index')
 let api	= require('./src/route/api')
 let product	= require('./src/route/product')
+let cart = require('./src/route/cart')
+let user = require('./src/route/user')
 
 app.use('/', index)
 app.use('/api', api)
 app.use('/product', product)
+app.use('/cart', cart)
+app.use('/user', user)
 
-app.listen(process.env.PORT || 8000, () => {
+app.listen(process.env.PORT || 80, () => {
 	app.emit('Website on', null)
 	console.log('Website on')
 })

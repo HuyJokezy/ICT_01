@@ -1,4 +1,4 @@
-exports.fixVietnamese = function (text) {
+exports.handler = function (text) {
 	let result = ''
 	for (let i = 0; i < text.length; i++) {
 		switch (text[i]) {
@@ -37,16 +37,4 @@ exports.fixVietnamese = function (text) {
     }
   }
   return result
-}
-
-exports.parseCookies = function (reqCookie) {
-  let list = {}
-  let rc = reqCookie
-
-  rc && rc.split(';').forEach(function(cookie) {
-    var parts = cookie.split('=');
-    list[parts.shift().trim()] = decodeURI(parts.join('='));
-  });
-
-  return list;
 }
